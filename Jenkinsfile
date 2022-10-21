@@ -36,7 +36,7 @@ pipeline {
              
             steps {
                 sh '''ssh root@172.31.3.13 << EOF
-            sudo docker -H ssh://root@172.31.3.13 run -d -p 8050:8080 nikhilnidhi/samplewebapp
+		docker run -d -p 8004:8080 nikhilnidhi/samplewebapp
         EOF'''
 
             }
