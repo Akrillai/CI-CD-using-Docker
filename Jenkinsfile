@@ -25,24 +25,17 @@ pipeline {
            steps {
               
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:latest'
+                //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:latest'
                 //sh 'docker tag samplewebapp nikhilnidhi/samplewebapp:$BUILD_NUMBER'
                
           }
         }
      
-      stage('Run Docker container on Jenkins Agent') {
-             
-            steps 
-			{
-                sh "docker run -d -p 8050:8080 nikhilnidhi/samplewebapp"
- 
-            }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@172.31.3.13 run -d -p 8050:8080 nikhilnidhi/samplewebapp"
+                sh "docker -H ssh://root@172.31.3.13 run -d -p 8050:8080 nikhilnidhi/samplewebapp"
  
             }
         }
