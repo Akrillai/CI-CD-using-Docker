@@ -35,14 +35,14 @@ pipeline {
              
             steps 
 			{
-                sh "sudo docker run -d -p 8080:8080 nikhilnidhi/samplewebapp"
+                sh "docker run -d -p 8080:8080 nikhilnidhi/samplewebapp"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "sudo docker -H ssh://root@172.31.3.13 run -d -p 8080:8080 nikhilnidhi/samplewebapp"
+                sh "docker -H ssh://root@172.31.3.13 run -d -p 8080:8080 nikhilnidhi/samplewebapp"
  
             }
         }
