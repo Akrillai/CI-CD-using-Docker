@@ -31,15 +31,12 @@ pipeline {
           }
         }
      
-
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh '''ssh root@172.31.3.13 << EOF
-		docker run -d -p 8004:8080 nikhilnidhi/samplewebapp
-        EOF'''
-
+                sh "docker -H ssh://root@172.31.3.13 run -d -p 8003:8080 nikhilnidhi/samplewebapp"
+ 
             }
         }
     }
-	}
+ }
